@@ -8,8 +8,10 @@ language: bash
 before_script:
   - pwd
   - ls -ltra
+  - git clone xxxx
   
 script:
+- chmod +x scripts/deploy.sh
 - scripts/deploy.sh production
     
 after_script:
