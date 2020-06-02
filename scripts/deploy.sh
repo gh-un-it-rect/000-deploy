@@ -16,6 +16,9 @@ echo "info: ${DEFAULT_INFO}"
 #echo "pushed_at: ${DEFAULT_PUSHED}"
 echo " -------          -------"
 
+eval "$(ssh-agent -s)" #start the ssh agent
+echo -e $SSHKEY
+
 if [ "$TRAVIS_BRANCH" = "master" ]; then
   echo "This branch is the master branch"
 else
