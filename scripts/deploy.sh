@@ -16,13 +16,20 @@ echo "info: ${DEFAULT_INFO}"
 #echo "pushed_at: ${DEFAULT_PUSHED}"
 echo " -------          -------"
 
+echo ""
+
+echo " ------- SSH -------"
 eval "$(ssh-agent -s)" #start the ssh agent
 echo -e $SSHKEY
+echo " -------     -------"
 
 if [ "$TRAVIS_BRANCH" = "master" ]; then
   echo "This branch is the master branch"
 else
-  echo "This branch is the ${TRAVIS_BRANCH} branch" 
+  echo -e "\e[31mPor favor recuerde que solo pueden deployar en rama Master\e[0m"
+  echo -e "\e[101m \e[5mhttps://github.com/gh-un-it-rect/000-deploy/settings/branches"
+  exit 1
 fi
  
 echo "param: "$1
+exit 0
