@@ -1,12 +1,17 @@
 language: bash
+
 before_script:
-  - echo date
+  - echo $date
+  
 script:
 - |
-  if [ "$TRAVIS_BRANCH == "master" ]; then
+  if [ "$TRAVIS_BRANCH" == "master" ]; then
     scripts/deploy.sh staging
   elif
     scripts/deploy.sh production
     
+after_script:
+  - echo $date
+  
 notifications:
   email: false
