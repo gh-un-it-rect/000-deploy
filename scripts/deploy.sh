@@ -20,27 +20,32 @@ function __profiler__ {
    echo ""
 
    echo " ------- SSH -------"
-   eval "$(ssh-agent -s)" #start the ssh agent
+   eval "$(ssh-agent -s)"
    echo -e $SSHKEY
    echo " -------     -------"
+   
+   echo ""
+   
+   echo " ------- TRAVIS -------"
+   eval "token: $__PASSWORD_GITHUB__" 
+   echo "branch: $TRAVIS_BRANCH"
+   echo " -------     -------"
+  
 }
 
 function __execute__ {
    if [ "$TRAVIS_BRANCH" = "master" ]; then
      echo "This branch is the master branch"
+     quit 0
    else
      echo -e "\e[31mPor favor recuerde que solo pueden deployar en rama Master\e[0m"
-     echo -e "\e[101m \e[5mhttps://github.com/gh-un-it-rect/000-deploy/settings/branches"
+     echo -e "\e[31mhttps://github.com/gh-un-it-rect/000-deploy/settings/branches\e[0m"
      quit 1
    fi
-   
-   echo -e "\e[31mPor favor recuerde que solo pueden deployar en rama Master\e[0m"
-   echo -e "\e[101m \e[5mhttps://github.com/gh-un-it-rect/000-deploy/settings/branches"
-   echo "param: "$1
-   quit 0
 }
 
 function quit {
+   echo "exit "$1
    exit $1
 }
 
