@@ -2,6 +2,8 @@ language: bash
 
 before_script:
   - echo $date
+  pwd
+  ls -ltra
   
 script:
 - |
@@ -11,6 +13,8 @@ script:
     scripts/deploy.sh production
     
 after_script:
+  - pwd
+  - ls -ltra
   - echo $date
   
 notifications:
