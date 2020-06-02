@@ -27,7 +27,7 @@ function __profiler__ {
    echo ""
    
    echo " ------- TRAVIS -------"
-   eval "token: $__PASSWORD_GITHUB__" 
+   echo "token: $__TOKEN_GITHUB__" 
    echo "branch: $TRAVIS_BRANCH"
    echo " -------     -------"
   
