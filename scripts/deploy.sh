@@ -43,13 +43,12 @@ function __execute__ {
    if [ "$TRAVIS_BRANCH" = "master" ]; then
      echo "This branch is the master branch"
      
-     echo "curl PATCH -i -H $__PREVIEW__ -H $__JSON__ -H Authorization: token $__TOKEN_GITHUB__ -d $__BODY_OK__ https://api.github.com/repos/$__ORG_DEPLOY__/$__REPO_DEPLOY__"
+     echo -e "\e[42m curl PATCH -i -H $__PREVIEW__ -H $__JSON__ -H Authorization: token $__TOKEN_GITHUB__ -d $__BODY_OK__ https://api.github.com/repos/$__ORG_DEPLOY__/$__REPO_DEPLOY__"
      curl PATCH -i -H "$__PREVIEW__" -H "$__JSON__" -H "Authorization: token $__TOKEN_GITHUB__" -d "$__BODY_OK__" https://api.github.com/repos/$__ORG_DEPLOY__/$__REPO_DEPLOY__
      
-     git clone https://api.github.com/repos/$__REPO_DEPLOY__
-     git
+     sleep 20
      
-     echo "curl PATCH -i -H $__PREVIEW__ -H $__JSON__ -H Authorization: token $__TOKEN_GITHUB__ -d $__BODY_KO__ https://api.github.com/repos/$__ORG_DEPLOY__/$__REPO_DEPLOY__"
+     echo -e "\e[42m curl PATCH -i -H $__PREVIEW__ -H $__JSON__ -H Authorization: token $__TOKEN_GITHUB__ -d $__BODY_KO__ https://api.github.com/repos/$__ORG_DEPLOY__/$__REPO_DEPLOY__"
      curl PATCH -i -H "$__PREVIEW__" -H "$__JSON__" -H "Authorization: token $__TOKEN_GITHUB__" -d "$__BODY_KO__" https://api.github.com/repos/$__ORG_DEPLOY__/$__REPO_DEPLOY__
      
      
