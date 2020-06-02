@@ -18,11 +18,11 @@ function __profiler__ {
    #echo "pushed_at: ${DEFAULT_PUSHED}"
    echo " -------          -------"
 
-   echo ""
+   echo "" 
 
    echo -e " \e[42;1m ------- SSH -------"
    eval "$(ssh-agent -s)"
-   echo -e $SSHKEY > deploy_key.pem
+   echo -e $__SSHKEY__ > deploy_key.pem
    chmod 600 deploy_key.pem 
    ssh-add deploy_key.pem
    echo " -------     -------"
