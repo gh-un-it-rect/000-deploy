@@ -6,18 +6,12 @@ notifications:
 language: bash
 
 before_script:
-  - echo $date
   - pwd
   - ls -ltra
   
 script:
-- |
-  if [ "$TRAVIS_BRANCH" == "master" ]; then
-    scripts/deploy.sh staging
-  elif
-    scripts/deploy.sh production
+- scripts/deploy.sh production
     
 after_script:
   - pwd
   - ls -ltra
-  - echo $date
