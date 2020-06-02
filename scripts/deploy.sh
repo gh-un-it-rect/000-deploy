@@ -1,3 +1,7 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
-echo "deploy env:"$1
+if [ "$TRAVIS_BRANCH" = "master" ]; then
+  echo "This branch is the 'master' branch"
+else
+ echo "This branch is the ${TRAVIS_BRANCH} branch"
+ 
