@@ -8,7 +8,7 @@ function __profiler__ {
    #DEFAULT_CREATED=$(echo $DEFAULT_INFO | jq '.created_at' | tr -d \")
    #DEFAULT_PUSHED=$(echo $DEFAULT_INFO | jq '.pushed_at' | tr -d \")
 
-   echo " ------- DEFAULTS -------"
+   echo e- " ------- \e[42mDEFAULTS -------"
    echo "info: ${DEFAULT_INFO}"
    #echo "branch: ${DEFAULT_BRANCH}"
    #echo "fullname: ${DEFAULT_FULLNAME}"
@@ -19,18 +19,18 @@ function __profiler__ {
 
    echo ""
 
-   echo " ------- SSH -------"
+   echo -e " ------- \e[42mSSH -------"
    eval "$(ssh-agent -s)"
    echo -e $SSHKEY
    echo " -------     -------"
    
    echo ""
    
-   echo " ------- TRAVIS -------"
+   echo -e " ------- \e[42mTRAVIS -------"
    echo "token: $__TOKEN_GITHUB__"
    echo "arg: $__PREVIEW__" 
    echo "arg: $__BODY_OK__"
-   echo "arg: $__REPO_DEPLOY_"
+   echo "arg: $__REPO_DEPLOY__"
    echo "arg: $__JSON__"
    echo "branch: $TRAVIS_BRANCH"
    echo " -------     -------"
