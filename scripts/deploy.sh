@@ -25,6 +25,9 @@ function __profiler__ {
    echo -e $__SSHKEY__ > deploy_key.pem
    chmod 600 deploy_key.pem 
    ssh-add deploy_key.pem
+   yes ""
+   yes ""
+   yes ""
    echo " -------     -------"
    
    echo ""
