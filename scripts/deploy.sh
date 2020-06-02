@@ -18,18 +18,6 @@ function __profiler__ {
    #echo "pushed_at: ${DEFAULT_PUSHED}"
    echo " -------          -------"
 
-   echo "" 
-
-   echo -e " \e[42;1m ------- SSH -------"
-   eval "$(ssh-agent -s)"
-   echo -e $__SSHKEY__ > deploy_key.pem
-   chmod 600 deploy_key.pem 
-   ssh-add deploy_key.pem
-   yes ""
-   yes ""
-   yes ""
-   echo " -------     -------"
-   
    echo ""
    
    echo -e " \e[42;1m ------- TRAVIS -------"
@@ -40,9 +28,21 @@ function __profiler__ {
    echo "arg: $__ORG_DEPLOY__"
    echo "arg: $__REPO_DEPLOY__"
    echo "arg: $__JSON__"
+   echo "arg: $__SSHKEY__"
    echo "branch: $TRAVIS_BRANCH"
    echo " -------     -------"
-  
+   
+   echo "" 
+
+   echo -e " \e[42;1m ------- SSH -------"
+   eval "$(ssh-agent -s)"
+   echo -e $__SSHKEY__ > deploy_key.pem
+   cat  deploy_key.pem
+   chmod 600 deploy_key.pem 
+   yes "" | ssh-add deploy_key.pem
+   yes ""
+   yes ""
+   echo " -------     -------"
 }
 
 function __execute__ {
