@@ -8,7 +8,7 @@ function __profiler__ {
    #DEFAULT_CREATED=$(echo $DEFAULT_INFO | jq '.created_at' | tr -d \")
    #DEFAULT_PUSHED=$(echo $DEFAULT_INFO | jq '.pushed_at' | tr -d \")
 
-   echo e- " ------- \e[42mDEFAULTS -------"
+   echo e- "\e[42m ------- DEFAULTS -------"
    echo "info: ${DEFAULT_INFO}"
    #echo "branch: ${DEFAULT_BRANCH}"
    #echo "fullname: ${DEFAULT_FULLNAME}"
@@ -19,17 +19,19 @@ function __profiler__ {
 
    echo ""
 
-   echo -e " ------- \e[42mSSH -------"
+   echo -e "\e[42m ------- SSH -------"
    eval "$(ssh-agent -s)"
    echo -e $SSHKEY
    echo " -------     -------"
    
    echo ""
    
-   echo -e " ------- \e[42mTRAVIS -------"
+   echo -e "\e[42m ------- TRAVIS -------"
    echo "token: $__TOKEN_GITHUB__"
    echo "arg: $__PREVIEW__" 
    echo "arg: $__BODY_OK__"
+   echo "arg: $__BODY_KO__"
+   echo "arg: $__ORG_DEPLOY__"
    echo "arg: $__REPO_DEPLOY__"
    echo "arg: $__JSON__"
    echo "branch: $TRAVIS_BRANCH"
@@ -40,8 +42,17 @@ function __profiler__ {
 function __execute__ {
    if [ "$TRAVIS_BRANCH" = "master" ]; then
      echo "This branch is the master branch"
-     echo "curl PATCH -i -H $__PREVIEW__ -H $__JSON__ -H Authorization: token $__TOKEN_GITHUB__ -d $__BODY_OK__ https://api.github.com/repos/$__REPO_DEPLOY__"
-     curl PATCH -i -H "$__PREVIEW__" -H "$__JSON__" -H "Authorization: token $__TOKEN_GITHUB__" -d "$__BODY_OK__" https://api.github.com/repos/$__REPO_DEPLOY__
+     
+     echo "curl PATCH -i -H $__PREVIEW__ -H $__JSON__ -H Authorization: token $__TOKEN_GITHUB__ -d $__BODY_OK__ https://api.github.com/repos/$__ORG_DEPLOY__/$__REPO_DEPLOY__"
+     curl PATCH -i -H "$__PREVIEW__" -H "$__JSON__" -H "Authorization: token $__TOKEN_GITHUB__" -d "$__BODY_OK__" https://api.github.com/repos/$__ORG_DEPLOY__/$__REPO_DEPLOY__
+     
+     git clone https://api.github.com/repos/$__REPO_DEPLOY__
+     git
+     
+     echo "curl PATCH -i -H $__PREVIEW__ -H $__JSON__ -H Authorization: token $__TOKEN_GITHUB__ -d $__BODY_KO__ https://api.github.com/repos/$__ORG_DEPLOY__/$__REPO_DEPLOY__"
+     curl PATCH -i -H "$__PREVIEW__" -H "$__JSON__" -H "Authorization: token $__TOKEN_GITHUB__" -d "$__BODY_KO__" https://api.github.com/repos/$__ORG_DEPLOY__/$__REPO_DEPLOY__
+     
+     
      quit 0
    else
      echo -e "\e[31mPor favor recuerde que solo pueden deployar en rama Master\e[0m"
