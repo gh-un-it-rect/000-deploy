@@ -1,9 +1,14 @@
+dist: trusty
+sudo: required
+notifications:
+  email: false
+  
 language: bash
 
 before_script:
   - echo $date
-  pwd
-  ls -ltra
+  - pwd
+  - ls -ltra
   
 script:
 - |
@@ -16,6 +21,3 @@ after_script:
   - pwd
   - ls -ltra
   - echo $date
-  
-notifications:
-  email: false
