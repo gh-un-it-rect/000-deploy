@@ -9,7 +9,7 @@ function __profiler__ {
    #DEFAULT_PUSHED=$(echo $DEFAULT_INFO | jq '.pushed_at' | tr -d \")
 
    echo ""
-   echo e- " \e[42;1m ------- DEFAULTS -------"
+   echo -e " \e[42;1m ------- DEFAULTS -------"
    echo "info: ${DEFAULT_INFO}"
    #echo "branch: ${DEFAULT_BRANCH}"
    #echo "fullname: ${DEFAULT_FULLNAME}"
@@ -48,6 +48,8 @@ function __execute__ {
      curl -i -H "$__PREVIEW__" -H "$__JSON__" -H "Authorization: token $__TOKEN_GITHUB__" -d "$__BODY_OK__" https://api.github.com/repos/$__ORG_DEPLOY__/$__REPO_DEPLOY__
      
       rm -Rf .git
+      git config --global user.name "it-rect"
+      git config --global user.email info@ite-rect.com
       git init 
       echo "hola!" > file.txt
       git add -A
