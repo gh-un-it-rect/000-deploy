@@ -33,7 +33,9 @@ function execute {
      echo -e "\e[101m \e[5mhttps://github.com/gh-un-it-rect/000-deploy/settings/branches"
      quit 1
    fi
- 
+   
+   echo -e "\e[31mPor favor recuerde que solo pueden deployar en rama Master\e[0m"
+   echo -e "\e[101m \e[5mhttps://github.com/gh-un-it-rect/000-deploy/settings/branches"
    echo "param: "$1
    quit 0
 }
