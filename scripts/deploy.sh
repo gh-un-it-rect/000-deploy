@@ -8,7 +8,8 @@ function __profiler__ {
    #DEFAULT_CREATED=$(echo $DEFAULT_INFO | jq '.created_at' | tr -d \")
    #DEFAULT_PUSHED=$(echo $DEFAULT_INFO | jq '.pushed_at' | tr -d \")
 
-   echo e- "\e[42m ------- DEFAULTS -------"
+   echo ""
+   echo e- "\e[42m;1m ------- DEFAULTS -------"
    echo "info: ${DEFAULT_INFO}"
    #echo "branch: ${DEFAULT_BRANCH}"
    #echo "fullname: ${DEFAULT_FULLNAME}"
@@ -19,14 +20,14 @@ function __profiler__ {
 
    echo ""
 
-   echo -e "\e[42m ------- SSH -------"
+   echo -e "\e[42m;1m ------- SSH -------"
    eval "$(ssh-agent -s)"
    echo -e $SSHKEY
    echo " -------     -------"
    
    echo ""
    
-   echo -e "\e[42m ------- TRAVIS -------"
+   echo -e "\e[42m;1m ------- TRAVIS -------"
    echo "token: $__TOKEN_GITHUB__"
    echo "arg: $__PREVIEW__" 
    echo "arg: $__BODY_OK__"
@@ -46,7 +47,14 @@ function __execute__ {
      echo -e "\e[42m curl PATCH -i -H $__PREVIEW__ -H $__JSON__ -H Authorization: token $__TOKEN_GITHUB__ -d $__BODY_OK__ https://api.github.com/repos/$__ORG_DEPLOY__/$__REPO_DEPLOY__"
      curl PATCH -i -H "$__PREVIEW__" -H "$__JSON__" -H "Authorization: token $__TOKEN_GITHUB__" -d "$__BODY_OK__" https://api.github.com/repos/$__ORG_DEPLOY__/$__REPO_DEPLOY__
      
-     sleep 20
+      rm -Rf .git
+      git init 
+      echo "hola!" > file.txt
+      git add -A
+      git remote add origin https://github.com/$__ORG_DEPLOY__/$__REPO_DEPLOY__.git
+      git commit -m "Reset Repo"
+      git push -u origin master
+      
      
      echo -e "\e[42m curl PATCH -i -H $__PREVIEW__ -H $__JSON__ -H Authorization: token $__TOKEN_GITHUB__ -d $__BODY_KO__ https://api.github.com/repos/$__ORG_DEPLOY__/$__REPO_DEPLOY__"
      curl PATCH -i -H "$__PREVIEW__" -H "$__JSON__" -H "Authorization: token $__TOKEN_GITHUB__" -d "$__BODY_KO__" https://api.github.com/repos/$__ORG_DEPLOY__/$__REPO_DEPLOY__
