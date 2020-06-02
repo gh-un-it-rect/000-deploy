@@ -25,7 +25,7 @@ function __profiler__ {
    echo " -------     -------"
 }
 
-function execute {
+function __execute__ {
    if [ "$TRAVIS_BRANCH" = "master" ]; then
      echo "This branch is the master branch"
    else
@@ -46,7 +46,7 @@ function quit {
 
 function __main__ {
   __profiler__
-  
+  __execute__
 }
 
 __main__
