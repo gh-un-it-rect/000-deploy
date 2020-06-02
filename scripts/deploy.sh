@@ -38,10 +38,10 @@ function __profiler__ {
    eval "$(ssh-agent -s)"
    echo -e $__SSHKEY__ > deploy_key.pem
    cat  deploy_key.pem
-   chmod 600 deploy_key.pem 
-   yes "" | ssh-add deploy_key.pem
-   yes ""
-   yes ""
+   echo -ne '\n' | chmod 600 deploy_key.pem 
+   echo -ne '\n' | ssh-add deploy_key.pem
+   echo -ne '\n'
+   echo -ne '\n'
    echo " -------     -------"
 }
 
