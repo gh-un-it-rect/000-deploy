@@ -1,23 +1,8 @@
 #!/bin/bash
 
+__REPO_DEPLOY__ = $1
+
 function __profiler__ {
-   DEFAULT_INFO=$(curl 'https://api.github.com/repos/gh-un-it-rect/000-deploy')
-   #DEFAULT_BRANCH=$(echo $DEFAULT_INFO | jq '.default_branch' | tr -d \")
-   #DEFAULT_FULLNAME=$(echo $DEFAULT_INFO | jq '.full_name' | tr -d \")
-   #DEFAULT_UPDATED=$(echo $DEFAULT_INFO | jq '.updated_at' | tr -d \")
-   #DEFAULT_CREATED=$(echo $DEFAULT_INFO | jq '.created_at' | tr -d \")
-   #DEFAULT_PUSHED=$(echo $DEFAULT_INFO | jq '.pushed_at' | tr -d \")
-
-   echo ""
-   echo -e " \e[42;1m ------- DEFAULTS -------"
-   echo "info: ${DEFAULT_INFO}"
-   #echo "branch: ${DEFAULT_BRANCH}"
-   #echo "fullname: ${DEFAULT_FULLNAME}"
-   #echo "updated_at: ${DEFAULT_UPDATED}"
-   #echo "created_at: ${DEFAULT_CREATED}"
-   #echo "pushed_at: ${DEFAULT_PUSHED}"
-   echo " -------          -------"
-
    echo ""
    
    echo -e " \e[42;1m ------- TRAVIS -------"
@@ -28,6 +13,7 @@ function __profiler__ {
    echo "arg: $__ORG_DEPLOY__"
    echo "arg: $__REPO_DEPLOY__"
    echo "arg: $__JSON__"
+   echo "arg: $__ORG_TARGET_IT_RECT__"
    echo "branch: $TRAVIS_BRANCH"
    echo " -------     -------"
    
