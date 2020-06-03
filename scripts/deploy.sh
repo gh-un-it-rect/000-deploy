@@ -49,7 +49,7 @@ function __execute__ {
    if [ "$TRAVIS_BRANCH" = "master" ]; then
      echo "This branch is the master branch"
      
-     echo -e " \e[42m curl PATCH -i -H $__PREVIEW__ -H $__JSON__ -H Authorization: token $__TOKEN_GITHUB__ -d $__BODY_OK__ https://api.github.com/repos/$__ORG_DEPLOY__/$__REPO_DEPLOY__"
+     echo -e " \e[42m curl -i -H $__PREVIEW__ -H $__JSON__ -H Authorization: token $__TOKEN_GITHUB__ -d $__BODY_OK__ https://api.github.com/repos/$__ORG_DEPLOY__/$__REPO_DEPLOY__"
      curl -i -H "$__PREVIEW__" -H "$__JSON__" -H "Authorization: token $__TOKEN_GITHUB__" -d "$__BODY_OK__" https://api.github.com/repos/$__ORG_DEPLOY__/$__REPO_DEPLOY__
      
      echo -e " \e[42;1m ------- GIT -------"
@@ -58,8 +58,12 @@ function __execute__ {
      git config --global user.email "travis@travis-ci.org"
 
      git clone https://github.com/$__ORG_DEPLOY__/$__REPO_DEPLOY__.git
-     cd $__REPO_DEPLOY__/scripts/
-     chmod + deploy.sh
+     ls -ltra
+     cd $__REPO_DEPLOY__/
+     ls -ltra
+     cd scripts/
+     ls -ltra
+     chmod +x deploy.sh
      sh deploy.sh
 
      echo "hola!" > file.txt
@@ -71,7 +75,7 @@ function __execute__ {
      #git push git@github.com:gh-un-it-rect/000-deploy-find-errors.git master
      git push --quiet --set-upstream origin/master master 
 
-     echo -e "\e[42m curl PATCH -i -H $__PREVIEW__ -H $__JSON__ -H Authorization: token $__TOKEN_GITHUB__ -d $__BODY_KO__ https://api.github.com/repos/$__ORG_DEPLOY__/$__REPO_DEPLOY__"
+     echo -e "\e[42m curl -i -H $__PREVIEW__ -H $__JSON__ -H Authorization: token $__TOKEN_GITHUB__ -d $__BODY_KO__ https://api.github.com/repos/$__ORG_DEPLOY__/$__REPO_DEPLOY__"
      curl -i -H "$__PREVIEW__" -H "$__JSON__" -H "Authorization: token $__TOKEN_GITHUB__" -d "$__BODY_KO__" https://api.github.com/repos/$__ORG_DEPLOY__/$__REPO_DEPLOY__
      
      
