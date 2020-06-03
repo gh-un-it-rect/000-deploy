@@ -15,6 +15,7 @@ function __profiler__ {
    echo "arg: $__JSON__"
    echo "arg: $__ORG_TARGET_IT_RECT__"
    echo "branch: $TRAVIS_BRANCH"
+   echo "arg: $__CALL__"
    echo " -------     -------"
    
    echo "" 
