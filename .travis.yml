@@ -12,7 +12,7 @@ before_script:
   
 script:
 - chmod +x scripts/deploy.sh
-- scripts/deploy.sh '100-tj-vicboma1'
+- scripts/deploy.sh '101-tj-vicboma1'
 
 after_script:
   - pwd
