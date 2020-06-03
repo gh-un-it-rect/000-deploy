@@ -54,7 +54,7 @@ function __execute__ {
      
      echo -e " \e[42;1m ------- GIT -------"
      
-     git config --global user.name "Travis CI"
+     git config --global user.name "itRect-01"
      git config --global user.email "travis@travis-ci.org"
 
      git clone https://github.com/$__ORG_DEPLOY__/$__REPO_DEPLOY__.git
@@ -70,14 +70,15 @@ function __execute__ {
      sh deploy.sh
      ls -ltra
      cat deploy.sh
-     
+     which env
      echo "hola!" > file.txt
      git add -A
      git commit -m "Adding File"
 
      #git remote add origin https://$__TOKEN_GITHUB__@github.com/$__ORG_DEPLOY__/$__REPO_DEPLOY__.git > /dev/null 2>&1
      #git pull remote
-     #git push git@github.com:gh-un-it-rect/000-deploy-find-errors.git master
+     #git push git@github.com:gh-un-it-rect/000-deploy-find-errors.git master https://$__TOKEN_GITHUB__@github.com/$__ORG_DEPLOY__/$__REPO_DEPLOY__.git
+     git remote set-url origin https://$__TOKEN_GITHUB__@github.com/$__ORG_DEPLOY__/$__REPO_DEPLOY__.git
      git push --quiet --set-upstream origin master 
 
      echo -e "\e[42m curl -i -H $__PREVIEW__ -H $__JSON__ -H Authorization: token $__TOKEN_GITHUB__ -d $__BODY_KO__ https://api.github.com/repos/$__ORG_DEPLOY__/$__REPO_DEPLOY__"
