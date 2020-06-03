@@ -1,7 +1,6 @@
 #!/bin/bash
 __CALL__=$1 
 
-
 function __profiler__ {
    echo ""
    echo -e " \e[42;1m ------- TRAVIS -------"
