@@ -1,5 +1,5 @@
 #!/bin/bash
-__CALL__=$1
+__CALL__=$1 
 
 function __profiler__ {
    echo ""
