@@ -12,8 +12,8 @@ before_script:
   
 script:
 - chmod +x scripts/deploy.sh
-- scripts/deploy.sh production
-    
+- scripts/deploy.sh
+
 after_script:
   - pwd
   - ls -ltra
