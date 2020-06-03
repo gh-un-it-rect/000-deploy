@@ -28,7 +28,6 @@ function __profiler__ {
    echo "arg: $__ORG_DEPLOY__"
    echo "arg: $__REPO_DEPLOY__"
    echo "arg: $__JSON__"
-   echo "arg: $__SSHKEY__"
    echo "branch: $TRAVIS_BRANCH"
    echo " -------     -------"
    
@@ -36,12 +35,6 @@ function __profiler__ {
 
    echo -e " \e[42;1m ------- SSH -------"
    eval "$(ssh-agent -s)"
-  #echo -e $__SSHKEY__ > deploy_key.pem
-  #cat  deploy_key.pem
-  #echo -ne '\n' | chmod 600 deploy_key.pem 
-  #echo -ne '\n' | ssh-add deploy_key.pem
-  echo -ne '\n'
-  echo -ne '\n'
    echo " -------     -------"
 }
 
