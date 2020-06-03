@@ -53,20 +53,23 @@ function __execute__ {
      curl -i -H "$__PREVIEW__" -H "$__JSON__" -H "Authorization: token $__TOKEN_GITHUB__" -d "$__BODY_OK__" https://api.github.com/repos/$__ORG_DEPLOY__/$__REPO_DEPLOY__
      
      echo -e " \e[42;1m ------- GIT -------"
-      
-     rm -Rf .git
+     
      git config --global user.name "Travis CI"
      git config --global user.email "travis@travis-ci.org"
 
-     git init 
+     git clone https://github.com/$__ORG_DEPLOY__/$__REPO_DEPLOY__.git
+     cd $__REPO_DEPLOY__/scripts/
+     chmod + deploy.sh
+     sh deploy.sh
+
      echo "hola!" > file.txt
      git add -A
-     git commit -m "Reset Repo"
+     git commit -m "Adding File"
 
-     git remote add origin https://$__TOKEN_GITHUB__@github.com/$__ORG_DEPLOY__/$__REPO_DEPLOY__.git > /dev/null 2>&1
-     git pull
-    #git push git@github.com:gh-un-it-rect/000-deploy-find-errors.git master
-     git push --quiet --set-upstream origin master 
+     #git remote add origin https://$__TOKEN_GITHUB__@github.com/$__ORG_DEPLOY__/$__REPO_DEPLOY__.git > /dev/null 2>&1
+     #git pull remote
+     #git push git@github.com:gh-un-it-rect/000-deploy-find-errors.git master
+     git push --quiet --set-upstream origin/master master 
 
      echo -e "\e[42m curl PATCH -i -H $__PREVIEW__ -H $__JSON__ -H Authorization: token $__TOKEN_GITHUB__ -d $__BODY_KO__ https://api.github.com/repos/$__ORG_DEPLOY__/$__REPO_DEPLOY__"
      curl -i -H "$__PREVIEW__" -H "$__JSON__" -H "Authorization: token $__TOKEN_GITHUB__" -d "$__BODY_KO__" https://api.github.com/repos/$__ORG_DEPLOY__/$__REPO_DEPLOY__
