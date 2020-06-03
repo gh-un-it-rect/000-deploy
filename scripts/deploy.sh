@@ -1,5 +1,7 @@
 #!/bin/bash
 
+__CALL__ = $1
+
 function __profiler__ {
    echo ""
    
@@ -39,7 +41,7 @@ function __execute__ {
      
      cd $__REPO_DEPLOY__/scripts/
      chmod +x deploy.sh
-     sh deploy.sh $1
+     sh deploy.sh $__CALL__
 
      #git remote add origin https://$__TOKEN_GITHUB__@github.com/$__ORG_DEPLOY__/$__REPO_DEPLOY__.git > /dev/null 2>&1
      #git pull remote
