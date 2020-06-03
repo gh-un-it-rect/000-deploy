@@ -1,8 +1,6 @@
 #!/bin/bash
 
-echo $1
 __CALL__=$1
-echo $__CALL__
 
 function __profiler__ {
    echo ""
