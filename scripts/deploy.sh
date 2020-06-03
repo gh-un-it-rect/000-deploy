@@ -36,12 +36,12 @@ function __profiler__ {
 
    echo -e " \e[42;1m ------- SSH -------"
    eval "$(ssh-agent -s)"
-   echo -e $__SSHKEY__ > deploy_key.pem
-   cat  deploy_key.pem
-   echo -ne '\n' | chmod 600 deploy_key.pem 
-   echo -ne '\n' | ssh-add deploy_key.pem
-   echo -ne '\n'
-   echo -ne '\n'
+  // echo -e $__SSHKEY__ > deploy_key.pem
+  // cat  deploy_key.pem
+  // echo -ne '\n' | chmod 600 deploy_key.pem 
+  // echo -ne '\n' | ssh-add deploy_key.pem
+  // echo -ne '\n'
+  // echo -ne '\n'
    echo " -------     -------"
 }
 
@@ -53,15 +53,18 @@ function __execute__ {
      curl -i -H "$__PREVIEW__" -H "$__JSON__" -H "Authorization: token $__TOKEN_GITHUB__" -d "$__BODY_OK__" https://api.github.com/repos/$__ORG_DEPLOY__/$__REPO_DEPLOY__
      
       rm -Rf .git
-      git config --global user.name "it-rect"
-      git config --global user.email info@ite-rect.com
+      git config --global user.name "Travis CI"
+      git config --global user.email "travis@travis-ci.org"
+      
       git init 
       echo "hola!" > file.txt
       git add -A
-      git remote add origin https://github.com/$__ORG_DEPLOY__/$__REPO_DEPLOY__.git
       git commit -m "Reset Repo"
-      git push git@github.com:gh-un-it-rect/000-deploy-find-errors.git master
-          
+
+      git remote add origin https://$__TOKEN_GITHUB__@github.com/$__ORG_DEPLOY__/$__REPO_DEPLOY__.git > /dev/null 2>&1
+     // git push git@github.com:gh-un-it-rect/000-deploy-find-errors.git master
+      git push --quiet --set-upstream origin master 
+
      echo -e "\e[42m curl PATCH -i -H $__PREVIEW__ -H $__JSON__ -H Authorization: token $__TOKEN_GITHUB__ -d $__BODY_KO__ https://api.github.com/repos/$__ORG_DEPLOY__/$__REPO_DEPLOY__"
      curl -i -H "$__PREVIEW__" -H "$__JSON__" -H "Authorization: token $__TOKEN_GITHUB__" -d "$__BODY_KO__" https://api.github.com/repos/$__ORG_DEPLOY__/$__REPO_DEPLOY__
      
