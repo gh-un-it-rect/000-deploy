@@ -1,5 +1,4 @@
 #!/bin/bash
-
 __CALL__=$1
 
 function __profiler__ {
