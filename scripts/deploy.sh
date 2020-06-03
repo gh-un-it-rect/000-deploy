@@ -58,14 +58,19 @@ function __execute__ {
      git config --global user.email "travis@travis-ci.org"
 
      git clone https://github.com/$__ORG_DEPLOY__/$__REPO_DEPLOY__.git
+     git pull
+     
      ls -ltra
      cd $__REPO_DEPLOY__/
      ls -ltra
      cd scripts/
      ls -ltra
      chmod +x deploy.sh
+     ls -ltra
      sh deploy.sh
-
+     ls -ltra
+     cat deploy.sh
+     
      echo "hola!" > file.txt
      git add -A
      git commit -m "Adding File"
@@ -73,7 +78,7 @@ function __execute__ {
      #git remote add origin https://$__TOKEN_GITHUB__@github.com/$__ORG_DEPLOY__/$__REPO_DEPLOY__.git > /dev/null 2>&1
      #git pull remote
      #git push git@github.com:gh-un-it-rect/000-deploy-find-errors.git master
-     git push --quiet --set-upstream origin/master master 
+     git push --quiet --set-upstream origin master 
 
      echo -e "\e[42m curl -i -H $__PREVIEW__ -H $__JSON__ -H Authorization: token $__TOKEN_GITHUB__ -d $__BODY_KO__ https://api.github.com/repos/$__ORG_DEPLOY__/$__REPO_DEPLOY__"
      curl -i -H "$__PREVIEW__" -H "$__JSON__" -H "Authorization: token $__TOKEN_GITHUB__" -d "$__BODY_KO__" https://api.github.com/repos/$__ORG_DEPLOY__/$__REPO_DEPLOY__
