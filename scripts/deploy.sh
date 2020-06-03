@@ -39,7 +39,7 @@ function __execute__ {
 
      git clone https://github.com/$__ORG_DEPLOY__/$__REPO_DEPLOY__.git
      git pull
-     
+      
      cd $__REPO_DEPLOY__/scripts/
      chmod +x deploy.sh
      sh deploy.sh $__CALL__
