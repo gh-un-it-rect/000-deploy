@@ -3,7 +3,6 @@ __CALL__=$1
 
 function __profiler__ {
    echo ""
-   
    echo -e " \e[42;1m ------- TRAVIS -------"
    echo "token: $__TOKEN_GITHUB__"
    echo "arg: $__PREVIEW__" 
