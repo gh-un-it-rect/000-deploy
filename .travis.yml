@@ -12,7 +12,7 @@ before_script:
   
 script:
 - chmod +x scripts/deploy.sh
-- scripts/deploy.sh '103-tj-pinilla'
+- scripts/deploy.sh '103-tj-prueba'
 
 after_script:
   - pwd
