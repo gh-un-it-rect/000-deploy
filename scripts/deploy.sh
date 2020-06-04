@@ -32,8 +32,8 @@ function __execute__ {
      
      echo -e " \e[42;1m ------- GIT -------"
      
-     git config --global user.name "itRect-01"
-     git config --global user.email "travis@travis-ci.org"
+     git config --global user.name $__USER_NAME__
+     git config --global user.email $__USER_EMAIL__
 
      git clone https://github.com/$__ORG_DEPLOY__/$__REPO_DEPLOY__.git
      git pull
