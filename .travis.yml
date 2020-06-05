@@ -1,5 +1,5 @@
 notifications:
-  slack: geekshubs:S32At4pC3DX58sqtloCFQXyz
+  slack: geekshubs:rrvY2RwjwpXwVTW3jjcW8JYg
   template:
     - "Build <%{build_url}|#%{build_number}> (<%{compare_url}|%{commit}>) of %{repository_slug}@%{branch} by %{author} %{result} in %{duration}"
 dist: trusty
