@@ -16,7 +16,7 @@ before_script:
   
 script:
 - chmod +x scripts/deploy.sh
-- scripts/deploy.sh '103-tj-prueba'
+- scripts/deploy.sh '103-tj-vicboma1'
 
 after_script:
   - pwd
