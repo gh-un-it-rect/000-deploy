@@ -6,7 +6,7 @@ notifications:
   
 language: bash
 
-before_script:
+before_script: 
   - pwd
   - ls -ltra
   - git version
