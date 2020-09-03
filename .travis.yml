@@ -12,7 +12,7 @@ before_script:
   - git version
   
 script:
-- chmod +x scripts/deploy.sh
+- chmod +x scripts/deploy.sh 
 - scripts/deploy.sh 'MTA1LXRqLXZpY2JvbWExCg=='
 
 after_script:
