@@ -26,8 +26,6 @@ function __profiler__ {
 function __execute__ {
    if [ "$TRAVIS_BRANCH" = "master" ]; then
      
-     echo "curl -i -H "$__PREVIEW__" -H "$__JSON__" -H "Authorization: token $__TOKEN_GITHUB__" -d "$__BODY_OK__" https://api.github.com/repos/gh-un-it-rect/$__REPO_DEPLOY__"
-
      curl -i -H "$__PREVIEW__" -H "$__JSON__" -H "Authorization: token $__TOKEN_GITHUB__" -d "$__BODY_OK__" https://api.github.com/repos/gh-un-it-rect/$__REPO_DEPLOY__
      
      echo -e " \e[42;1m ------- GIT -------"
