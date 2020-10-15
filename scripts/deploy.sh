@@ -32,7 +32,7 @@ function __execute__ {
      git config --global user.name $__USER_NAME__
      git config --global user.email $__USER_EMAIL__
 
-     git clone https://$__USER_NAME__:$__TOKEN_GITHUB__@github.com/$__ORG_DEPLOY__/$__REPO_DEPLOY__.git
+     git clone https://$__TOKEN_GITHUB__@github.com/$__ORG_DEPLOY__/$__REPO_DEPLOY__.git
      git pull
       
      cd $__REPO_DEPLOY__/scripts/
