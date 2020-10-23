@@ -30,7 +30,9 @@ function __execute__ {
      
      echo -e " \e[42;1m ------- GIT -------"
      
-
+     git config --global user.name $__USER_NAME__
+     git config --global user.email $__USER_EMAIL__
+     
      git clone https://$__TOKEN_GITHUB__@github.com/$__ORG_DEPLOY__/$__REPO_DEPLOY__.git
      git pull
       
