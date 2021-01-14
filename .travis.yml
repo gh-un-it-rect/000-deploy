@@ -12,7 +12,7 @@ before_script:
 script:
 - chmod +x scripts/deploy.sh 
 - scripts/deploy.sh 'MjA1LXRtai1qcy12aWNib21hMQ==' 
-
+ 
 after_script:
   - pwd
   - ls -ltra
