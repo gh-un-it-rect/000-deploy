@@ -11,7 +11,7 @@ before_script:
 
 script:
 - chmod +x scripts/deploy.sh 
-- scripts/deploy.sh 'MTAyLXRqLWphdmEtdmljYm9tYTE=' 
+- scripts/deploy.sh 'MTAxLXRqLWphdmEtdmljYm9tYTE=' 
  
 after_script:
   - pwd
