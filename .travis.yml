@@ -2,7 +2,7 @@ dist: trusty
 notifications:
   email: false
   slack: geekshubs:rrvY2RwjwpXwVTW3jjcW8JYg
-language: shell
+language: bash
 before_script: 
   - pwd
   - ls -ltra
